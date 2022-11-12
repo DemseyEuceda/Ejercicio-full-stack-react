@@ -15,7 +15,7 @@ try {
     console.log('la conexion se realizo con exito')
 } catch (error) {
     console.log('la conexion tuvo un error: ', error)
-}
+} 
 
 /**  app.get('/', (req, res)=>{
     res.send('hola que hace')

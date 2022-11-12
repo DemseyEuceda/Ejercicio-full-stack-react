@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+//import { Link } from 'react-router-dom';
 
 
-const URI = 'http//://localhost:8000/blogs/';
+const URI = 'http://localhost:8000/blogs/';
 
 const CompShowBlogs = () =>{
      const [blogs, setBlog] = useState([]);
@@ -17,7 +18,7 @@ const getBlogs = async ()=>{
 
 }
 const deleteBlog = async (id)=>{
-    axios.delete(URI, id);
+    axios.delete(`${URI}${id}`);
     getBlogs();
 }
     return(
@@ -25,37 +26,29 @@ const deleteBlog = async (id)=>{
           <div className='row'>
             <div className='col'>
                 <table className='table'>
-                <thred className='table-primary'>
+                    <thead className='table-primary'>
                     <tr>
-                        <th></th>
                         <th>titulo</th>
                         <th>contenido</th>
                         <th>acciones</th>
                     </tr>
-
-                </thred>
+                    </thead>
                 <tbody>
                     {  blogs.map ( (blog)=>(
-                        <tr key = {blog.id} >
-                            <td></td>
-                            <td>blog.title</td>
-                            <td>blog.content</td>
+                        <tr key = {blog.id}>
+                            <td>{blog.title}</td>
+                            <td>{blog.content}</td>
                             <td>
+                            {/*    <Link to={`/edit/${blog.id}`} className='btn btn-info'></Link>*/} 
+                                
                                 <button onClick={ ()=>deleteBlog(blog.id)} className='btn btn-danger' >Eliminar</button>
-                            </td>
-                         <td></td>
-                            
+                            </td>  
                         </tr>
-                    ))
-
-                    }
-                </tbody>
+                    )) }
+                    </tbody>
                 </table>
             </div>
-
           </div>
-
-
         </div>
     );
 
