@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import CompShowBlogs from './blog/ShowBlog';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
@@ -9,7 +9,13 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         
       </header>
-      <CompShowBlogs></CompShowBlogs>
+      <BrowserRouter>
+      <Routes>
+
+        <Route path='/' element={<CompShowBlogs/>}/>
+      </Routes>
+      
+      </BrowserRouter>
     </div>
   );
 }
